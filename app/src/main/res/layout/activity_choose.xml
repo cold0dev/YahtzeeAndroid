@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@mipmap/bg"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/acesButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="aces"
+            android:text="Aces"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/twosButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="twos"
+            android:text="Twos" />
+
+        <Button
+            android:id="@+id/threesButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="threes"
+            android:text="Threes" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/foursButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="fours"
+            android:text="Fours" />
+
+        <Button
+            android:id="@+id/fivesButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="fives"
+            android:text="Fives" />
+
+        <Button
+            android:id="@+id/sixesButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="sixes"
+            android:text="Sixes" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/threeOfbutton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="threeof"
+            android:text="Three Of A Kind" />
+
+        <Button
+            android:id="@+id/fourOfButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="fourof"
+            android:text="Four Of A Kind" />
+
+        <Button
+            android:id="@+id/fullButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="full"
+            android:text="Full House" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/sstrButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="sstr"
+            android:text="Small Straight" />
+
+        <Button
+            android:id="@+id/lstrButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="lstr"
+            android:text="Large Straight" />
+
+        <Button
+            android:id="@+id/yahtzeeButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="choose"
+            android:tag="yahtzee"
+            android:text="Yahtzee" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/chanceButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:onClick="choose"
+        android:tag="chance"
+        android:text="Chance" />
+
+</LinearLayout>
