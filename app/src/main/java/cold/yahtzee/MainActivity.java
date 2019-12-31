@@ -1,14 +1,11 @@
 package cold.yahtzee;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,14 +18,24 @@ public class MainActivity extends AppCompatActivity {
     ImageButton dice5b;
     Button rollButton;
     Button[] buttonList;
+    TextView playerText;
 
     public static Dice[] diceList;
+    //Starts from zero
+    int maxPlayers = 1;
+    boolean[] playerBots = new boolean[]{
+            false,
+            false,
+            false,
+            false
+    };
     public static List<Player> playerList = new ArrayList<>();
     public static int activePlayer = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Delete after menu
         setContentView(R.layout.activity_main);
         dice1b = (ImageButton)findViewById(R.id.dice1);
         dice2b = (ImageButton)findViewById(R.id.dice2);
@@ -44,9 +51,12 @@ public class MainActivity extends AppCompatActivity {
                 new Dice(dice4b),
                 new Dice(dice5b),
         };
+        //---
+        for(boolean ai : playerBots){
+            if(playerList.size() == maxPlayers+1)break;
+            playerList.add(new Player(ai));
+        }
 
-        Player player1 = new Player(false);
-        playerList.add(player1);
     }
 
     void goToMain(){
@@ -65,9 +75,18 @@ public class MainActivity extends AppCompatActivity {
                 new Dice(dice4b),
                 new Dice(dice5b),
         };
+        if (activePlayer < maxPlayers)activePlayer++;
+        else activePlayer = 0;
+        playerText = findViewById(R.id.playerText);
+        String playerString = "PLAYER " + (activePlayer + 1) + ":";
+        playerText.setText(playerString);
     }
 
     //Logic
+    public void newGame(){
+
+    }
+
     public void roll(View v){
         if(playerList.get(activePlayer).rollsLeft == 0){goToChoose();return;}
         for(Dice d : diceList){
@@ -113,9 +132,6 @@ public class MainActivity extends AppCompatActivity {
             if(playerList.get(activePlayer).opt[i])buttonList[i].setEnabled(false);
         }
         rollButton.setText(R.string.roll);
-        //TURN CHANGE PLAYER
-
-
     }
 
     public void choose(View v){
@@ -191,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
             points[i] = playerList.get(i).getScore();
         }
         setContentView(R.layout.activity_result);
+        TextView winText = (TextView)findViewById(R.id.winText);
         TextView player1 = (TextView)findViewById(R.id.player1);
         TextView player2 = (TextView)findViewById(R.id.player2);
         TextView player3 = (TextView)findViewById(R.id.player3);
@@ -202,10 +219,19 @@ public class MainActivity extends AppCompatActivity {
                 player4,
         };
         int playersNumber = playerList.size();
+        int bestScore = 0;
+        int scoreOwner = 0;
         for(int i = 0;i < playersNumber;i++){
-            String player = "Player " + playersNumber + ":" + points[i];
+            if(bestScore < points[i]){
+                bestScore = points[i];
+                scoreOwner = i;
+            }
+            String player = "Player " + (i + 1) + ":" + points[i];
             playerTexts[i].setText(player);
+            playerTexts[i].setVisibility(View.VISIBLE);
         }
+        String won = "Player " + (scoreOwner + 1) + " won";
+        winText.setText(won);
     }
 
 }
